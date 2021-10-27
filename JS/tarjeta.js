@@ -40,9 +40,7 @@ class Targeta
 
     pintarInput()
     {
-        let ultimo = this.idInput.length - 1;
-        new Input(this.idContenedorInput, this.idInput[ultimo]);
-        this.idInput.push(this.id + Math.random());
+        new Input(this.idContenedorInput);
     }
 
     css()
@@ -51,8 +49,7 @@ class Targeta
         "padding": "10px",
         "margin": "5px",
         "background-color": "#8480b1",
-        "border-radius": "3px",
-        "width": "250px"});
+        "border-radius": "3px"});
 
         $('.txtName').css({
             "font-weight": "500",
@@ -86,15 +83,12 @@ class Targeta
     clicBtnAgregarTarget()
     {
         const id = this.id;
-        const ultimo = this.idInput.length - 1;
         const idContenedor = this.idContenedorInput;
-        const IDInput = this.idInput[ultimo];
 
         $(`#${this.idAgregarTargeta}`).click(function(){
             $(`#${id}`).fadeIn( 500,function(){
-                new Input(idContenedor, IDInput);
+                new Input(idContenedor);
             });
-            this.idInput.push(this.id + Math.random());//Este metodo genera un error
         });
     }
 
@@ -117,11 +111,3 @@ class Targeta
     }
 
 }
-
-/*
-
-    el ID de vada input es siempre el mismo falta que ese ID sea distinto
-    en la linea 97 no esta agregando el ultimo ID
-        this.idInput.push(this.id + Math.random());
-    solo lo toma una vez y luego no ejecuta nada.
-*/
